@@ -4,7 +4,24 @@ Deletion-resilient hypermedia pagination
 """
 
 import csv
+<<<<<<< HEAD
 from typing import Dict, List
+=======
+import math
+from typing import Dict, List, Tuple
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """Retrieves the index range from a given page and page size.
+    Args:
+        page (int): Page number (1-indexed).
+        page_size (int): Number of items per page.
+        
+    Returns:
+        Tuple[int, int]: Start/end indexes for specified pagination parameters.
+    """
+    return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
+>>>>>>> e3250b611638af0a7f9e365387f3c58a4e687eef
 
 
 class Server:
