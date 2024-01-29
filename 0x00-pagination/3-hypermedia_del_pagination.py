@@ -12,7 +12,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     Args:
         page (int): Page number (1-indexed).
         page_size (int): Number of items per page.
-
+        
     Returns:
         Tuple[int, int]: Start/end indexes for specified pagination parameters.
     """
