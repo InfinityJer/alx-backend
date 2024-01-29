@@ -14,7 +14,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
         page_size (int): Number of items per page.
 
     Returns:
-        Tuple[int, int]: Start and end indexes for the specified pagination parameters.
+        Tuple[int, int]: Start/end indexes for specified pagination parameters.
     """
     return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
 
@@ -30,7 +30,7 @@ class Server:
     def dataset(self) -> List[List]:
         """Cached dataset
         Returns:
-            List[List]: The dataset excluding the header row.
+            List[List]: dataset excluding header row.
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -75,7 +75,7 @@ class Server:
             Dict: Information about the requested page.
 
         Raises:
-            AssertionError: If index is not provided or not a non-negative integer.
+            AssertionError: If index not provided/not a non -ve integer.
         """
         data = self.indexed_dataset()
         assert index is not None and index >= 0 and index <= max(data.keys())
@@ -98,4 +98,3 @@ class Server:
             'data': page_data,
         }
         return page_info
-
