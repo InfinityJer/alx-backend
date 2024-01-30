@@ -30,7 +30,7 @@ class LRUCache(BaseCaching):
         """
         if key is not None:
             if key in self.order_used:
-                # Move accessed key to end of e' order_used list (recently used)
+                # Move accessed key to end of order_used list (recently used)
                 self.order_used.remove(key)
                 self.order_used.append(key)
             return self.cache_data.get(key)
