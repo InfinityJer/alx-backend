@@ -3,6 +3,7 @@
 """
 from base_caching import BaseCaching
 
+
 class MRUCache(BaseCaching):
     """ MRUCache inherits from BaseCaching
     """
@@ -27,11 +28,12 @@ class MRUCache(BaseCaching):
         """
         if key is not None:
             if key in self.cache_data:
-                # Move the accessed key to the end of the dictionary (most recently used)
+                # Move accessed key to end of dictionary (most recently used)
                 value = self.cache_data.pop(key)
                 self.cache_data[key] = value
                 return value
         return None
+
 
 if __name__ == "__main__":
     my_cache = MRUCache()
