@@ -3,6 +3,7 @@
 """
 from base_caching import BaseCaching
 
+
 class LIFOCache(BaseCaching):
     """ LIFOCache inherits from BaseCaching
     """
@@ -27,6 +28,7 @@ class LIFOCache(BaseCaching):
         """
         if key is not None:
             return self.cache_data.get(key)
+
 
 if __name__ == "__main__":
     my_cache = LIFOCache()
