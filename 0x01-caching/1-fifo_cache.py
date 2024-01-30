@@ -3,6 +3,7 @@
 """
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """ FIFOCache inherits from BaseCaching
     """
@@ -28,6 +29,7 @@ class FIFOCache(BaseCaching):
         if key is not None:
             return self.cache_data.get(key)
 
+
 if __name__ == "__main__":
     my_cache = FIFOCache()
     my_cache.put("A", "Hello")
@@ -41,4 +43,3 @@ if __name__ == "__main__":
     my_cache.print_cache()
     my_cache.put("F", "Mission")
     my_cache.print_cache()
-
