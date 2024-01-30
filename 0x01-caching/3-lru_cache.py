@@ -3,6 +3,7 @@
 """
 from base_caching import BaseCaching
 
+
 class LRUCache(BaseCaching):
     """ LRUCache inherits from BaseCaching
     """
@@ -29,10 +30,11 @@ class LRUCache(BaseCaching):
         """
         if key is not None:
             if key in self.order_used:
-                # Move the accessed key to the end of the order_used list (recently used)
+                # Move accessed key to end of e' order_used list (recently used)
                 self.order_used.remove(key)
                 self.order_used.append(key)
             return self.cache_data.get(key)
+
 
 if __name__ == "__main__":
     my_cache = LRUCache()
