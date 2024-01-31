@@ -37,18 +37,18 @@ class LFUCache(BaseCaching):
             # If the list of max_positions is empty, add the current position
             elif len(max_positions) == 0:
                 max_positions.append(i)
-            # If the frequency at the current position is less than the last recorded max frequency,
+            # If freq at current position is less than last recorded max freq,
             # add the current position to max_positions
             elif key_freq[1] < self.keys_freq[max_positions[-1]][1]:
                 max_positions.append(i)
-        # Reverse the list of max_positions to iterate from highest to lowest positions
+        # Reverse list of max_positions to iterate from highest to lowest pos.
         max_positions.reverse()
-        # Iterate through max_positions to find the correct position to insert the most recently used key
+        # Iterate through max_pos. to find the correct pos to insert the mru key
         for pos in max_positions:
             if self.keys_freq[pos][1] > mru_freq:
                 break
             ins_pos = pos
-        # Remove the most recently used key from its current position and insert it at the correct position
+        # Remove mru key from its current position and insert it at correct pos.
         self.keys_freq.pop(mru_pos)
         self.keys_freq.insert(ins_pos, [mru_key, mru_freq])
 
@@ -60,7 +60,7 @@ class LFUCache(BaseCaching):
         # If the key is not in the cache, perform LFU removal if necessary
         if key not in self.cache_data:
             if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
-                # Get the least frequently used key and remove it from the cache and keys_freq list
+                # Get lfu key and remove it from the cache and keys_freq list
                 lfu_key, _ = self.keys_freq[-1]
                 self.cache_data.pop(lfu_key)
                 self.keys_freq.pop()
@@ -75,15 +75,15 @@ class LFUCache(BaseCaching):
                     break
             self.keys_freq.insert(ins_index, [key, 0])
         else:
-            # If the key is already in the cache, update the item and reorder the keys_freq list
+            # If key is already in cache, update item and reorder keys_freq list
             self.cache_data[key] = item
             self.__reorder_items(key)
 
     def get(self, key):
         """Retrieves an item by key.
         """
-        # If the key is not None and exists in the cache, reorder the keys_freq list
+        # If key is not None and exists in cache, reorder keys_freq list
         if key is not None and key in self.cache_data:
             self.__reorder_items(key)
-        # Return the item associated with the key, or None if the key is not in the cache
+        # Return item associated with key, or None if key is not in cache
         return self.cache_data.get(key, None)
