@@ -29,7 +29,7 @@ class LFUCache(BaseCaching):
                 del self.frequency_counter[discarded_key]
                 print("DISCARD: {}".format(discarded_key))
             self.cache_data[key] = item
-            self.frequency_counter[key] = 
+            self.frequency_counter[key] =
             self.frequency_counter.get(key, 0) + 1
 
     def get(self, key):
