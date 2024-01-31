@@ -22,9 +22,9 @@ class LFUCache(BaseCaching):
                 min_frequency = min(self.frequency_counter.values())
                 candidates = [k for k, v in self.frequency_counter.items()
                               if v == min_frequency]
-                # Use LRU algorithm to discard only the lru if more than one
-                discarded_key = min(candidates, key=lambda k:
-                                    self.cache_data[k])
+                # Use LRU algorithm to discard only if more than 1 candidate
+                discarded_key = min(candidates,
+                                    key=lambda k: self.cache_data[k])
                 del self.cache_data[discarded_key]
                 del self.frequency_counter[discarded_key]
                 print("DISCARD: {}".format(discarded_key))
