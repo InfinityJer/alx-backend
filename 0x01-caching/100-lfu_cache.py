@@ -43,12 +43,12 @@ class LFUCache(BaseCaching):
                 max_positions.append(i)
         # Reverse list of max_positions to iterate from highest to lowest pos.
         max_positions.reverse()
-        # Iterate through max_pos. to find the correct pos to insert the mru key
+        # Iterate through max_pos to find the correct pos to insert the mru key
         for pos in max_positions:
             if self.keys_freq[pos][1] > mru_freq:
                 break
             ins_pos = pos
-        # Remove mru key from its current position and insert it at correct pos.
+        # Remove mru key from its current position and insert it at correct pos
         self.keys_freq.pop(mru_pos)
         self.keys_freq.insert(ins_pos, [mru_key, mru_freq])
 
@@ -75,7 +75,7 @@ class LFUCache(BaseCaching):
                     break
             self.keys_freq.insert(ins_index, [key, 0])
         else:
-            # If key is already in cache, update item and reorder keys_freq list
+            # If key is already in cache, update item, reorder keys_freq list
             self.cache_data[key] = item
             self.__reorder_items(key)
 
